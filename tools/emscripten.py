@@ -523,6 +523,8 @@ def finalize_wasm(infile, outfile, js_syms):
     modify_wasm = True
   if settings.STANDALONE_WASM:
     args.append('--standalone-wasm')
+  if settings['UNALIGNED_ACCESS_FUNCTION_LIST']:
+    args.append('--emscripten-unaligned-functions-list-file=' + settings['UNALIGNED_ACCESS_FUNCTION_LIST'])
 
   if settings.DEBUG_LEVEL >= 3:
     args.append('--dwarf')
