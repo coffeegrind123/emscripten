@@ -1775,11 +1775,17 @@ for (/**@suppress{duplicate}*/var i = 0; i <= {{{ GL_POOL_TEMP_BUFFERS_SIZE }}};
 #endif
   },
 
-  glBindTexture: (target, texture) => {
-#if GL_ASSERTIONS
+  glBindTexture__sig: 'vii',
+  glBindTexture: function(target, texture) {
+  #if GL_ASSERTIONS
     GL.validateGLObjectID(GL.textures, texture, 'glBindTexture', 'texture');
-#endif
-    GLctx.bindTexture(target, GL.textures[texture]);
+  #endif
+    if (texture >= 0) {
+      if (GL.textures[texture] === undefined) {
+        GL.textures[texture] = GLctx.createTexture();
+      }
+      GLctx.bindTexture(target, GL.textures[texture]);
+    }
   },
 
   glGetTexParameterfv: (target, pname, params) => {
