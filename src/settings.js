@@ -1817,6 +1817,8 @@ var EMBIND_AOT = false;
 // [link]
 var OFFSCREENCANVAS_SUPPORT = false;
 
+var UNALIGNED_ACCESS_FUNCTION_LIST = "";
+
 // If you are using PROXY_TO_PTHREAD with OFFSCREENCANVAS_SUPPORT, then specify
 // here a comma separated list of CSS ID selectors to canvases to proxy over
 // to the pthread at program startup, e.g. '#canvas1, #canvas2'.
